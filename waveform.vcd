@@ -1,0 +1,493 @@
+$date
+	Thu Aug 27 13:41:07 2026
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1ps
+$end
+$scope module triangle_rasterizer_tb $end
+$var wire 1 ! triangle_done $end
+$var wire 1 " triangle_busy $end
+$var wire 12 # display_color [11:0] $end
+$var wire 1 $ clear_done $end
+$var wire 1 % clear_busy $end
+$var reg 1 & clear_start $end
+$var reg 1 ' clk $end
+$var reg 8 ( display_x [7:0] $end
+$var reg 7 ) display_y [6:0] $end
+$var reg 1 * rst $end
+$var reg 12 + triangle_color [11:0] $end
+$var reg 16 , triangle_depth [15:0] $end
+$var reg 1 - triangle_start $end
+$var reg 8 . x0 [7:0] $end
+$var reg 8 / x1 [7:0] $end
+$var reg 8 0 x2 [7:0] $end
+$var reg 7 1 y0 [6:0] $end
+$var reg 7 2 y1 [6:0] $end
+$var reg 7 3 y2 [6:0] $end
+$scope module dut $end
+$var wire 16 4 clear_depth [15:0] $end
+$var wire 1 & clear_start $end
+$var wire 1 ' clk $end
+$var wire 8 5 display_x [7:0] $end
+$var wire 7 6 display_y [6:0] $end
+$var wire 1 * rst $end
+$var wire 1 " triangle_busy $end
+$var wire 12 7 triangle_color [11:0] $end
+$var wire 16 8 triangle_depth [15:0] $end
+$var wire 1 ! triangle_done $end
+$var wire 1 - triangle_start $end
+$var wire 8 9 x0 [7:0] $end
+$var wire 8 : x1 [7:0] $end
+$var wire 8 ; x2 [7:0] $end
+$var wire 7 < y0 [6:0] $end
+$var wire 7 = y1 [6:0] $end
+$var wire 7 > y2 [6:0] $end
+$var wire 16 ? stored_depth [15:0] $end
+$var wire 7 @ scanner_pixel_y [6:0] $end
+$var wire 8 A scanner_pixel_x [7:0] $end
+$var wire 1 B scanner_pixel_valid $end
+$var wire 1 C scanner_done $end
+$var wire 1 D scanner_busy $end
+$var wire 7 E pixel_write_y [6:0] $end
+$var wire 8 F pixel_write_x [7:0] $end
+$var wire 1 G pixel_write_en $end
+$var wire 16 H pixel_write_depth [15:0] $end
+$var wire 12 I pixel_write_color [11:0] $end
+$var wire 1 J pixel_inside $end
+$var wire 7 K min_y [6:0] $end
+$var wire 8 L min_x [7:0] $end
+$var wire 7 M max_y [6:0] $end
+$var wire 8 N max_x [7:0] $end
+$var wire 12 O display_color [11:0] $end
+$var wire 7 P depth_read_y [6:0] $end
+$var wire 8 Q depth_read_x [7:0] $end
+$var wire 7 R clear_y [6:0] $end
+$var wire 8 S clear_x [7:0] $end
+$var wire 1 T clear_write_en $end
+$var wire 1 $ clear_done $end
+$var wire 1 % clear_busy $end
+$var reg 1 U depth_write_en $end
+$var reg 16 V depth_write_value [15:0] $end
+$var reg 8 W depth_write_x [7:0] $end
+$var reg 7 X depth_write_y [6:0] $end
+$var reg 1 Y scanner_done_delay1 $end
+$var reg 1 Z scanner_done_delay2 $end
+$var reg 1 [ scanner_start $end
+$var reg 12 \ triangle_color_reg [11:0] $end
+$var reg 16 ] triangle_depth_reg [15:0] $end
+$var reg 8 ^ x0_reg [7:0] $end
+$var reg 8 _ x1_reg [7:0] $end
+$var reg 8 ` x2_reg [7:0] $end
+$var reg 7 a y0_reg [6:0] $end
+$var reg 7 b y1_reg [6:0] $end
+$var reg 7 c y2_reg [6:0] $end
+$scope module bounding_box_inst $end
+$var wire 8 d x0 [7:0] $end
+$var wire 8 e x1 [7:0] $end
+$var wire 8 f x2 [7:0] $end
+$var wire 7 g y0 [6:0] $end
+$var wire 7 h y1 [6:0] $end
+$var wire 7 i y2 [6:0] $end
+$var reg 8 j max_x [7:0] $end
+$var reg 7 k max_y [6:0] $end
+$var reg 8 l min_x [7:0] $end
+$var reg 7 m min_y [6:0] $end
+$upscope $end
+$scope module clear_inst $end
+$var wire 16 n clear_depth [15:0] $end
+$var wire 1 ' clk $end
+$var wire 1 * rst $end
+$var wire 1 & start $end
+$var reg 1 % clear_busy $end
+$var reg 1 $ clear_done $end
+$var reg 1 T clear_write_en $end
+$var reg 8 o clear_x [7:0] $end
+$var reg 7 p clear_y [6:0] $end
+$upscope $end
+$scope module depth_buffer_inst $end
+$var wire 1 ' clk $end
+$var wire 16 q write_depth [15:0] $end
+$var wire 1 U write_en $end
+$var wire 8 r write_x [7:0] $end
+$var wire 7 s write_y [6:0] $end
+$var wire 15 t write_pos [14:0] $end
+$var wire 7 u read_y [6:0] $end
+$var wire 8 v read_x [7:0] $end
+$var wire 15 w read_pos [14:0] $end
+$var parameter 32 x DEPTH $end
+$var parameter 32 y HEIGHT $end
+$var parameter 32 z WIDTH $end
+$var reg 16 { read_depth [15:0] $end
+$upscope $end
+$scope module depth_test_inst $end
+$var wire 1 ' clk $end
+$var wire 8 | depth_read_x [7:0] $end
+$var wire 7 } depth_read_y [6:0] $end
+$var wire 12 ~ new_color [11:0] $end
+$var wire 16 !" new_depth [15:0] $end
+$var wire 1 * rst $end
+$var wire 16 "" stored_depth [15:0] $end
+$var wire 7 #" pixel_y [6:0] $end
+$var wire 8 $" pixel_x [7:0] $end
+$var wire 1 J pixel_inside $end
+$var reg 12 %" saved_color [11:0] $end
+$var reg 16 &" saved_depth [15:0] $end
+$var reg 1 '" saved_valid $end
+$var reg 8 (" saved_x [7:0] $end
+$var reg 7 )" saved_y [6:0] $end
+$var reg 12 *" write_color [11:0] $end
+$var reg 16 +" write_depth [15:0] $end
+$var reg 1 G write_en $end
+$var reg 8 ," write_x [7:0] $end
+$var reg 7 -" write_y [6:0] $end
+$upscope $end
+$scope module framebuffer_inst $end
+$var wire 1 ' clk $end
+$var wire 8 ." read_x [7:0] $end
+$var wire 7 /" read_y [6:0] $end
+$var wire 12 0" write_color [11:0] $end
+$var wire 1 1" write_en $end
+$var wire 8 2" write_x [7:0] $end
+$var wire 7 3" write_y [6:0] $end
+$var wire 15 4" write_pos [14:0] $end
+$var wire 15 5" read_pos [14:0] $end
+$var parameter 32 6" ADDR_WIDTH $end
+$var parameter 32 7" DEPTH $end
+$var parameter 32 8" HEIGHT $end
+$var parameter 32 9" WIDTH $end
+$var reg 12 :" read_color [11:0] $end
+$upscope $end
+$scope module inside_test_inst $end
+$var wire 8 ;" x0 [7:0] $end
+$var wire 8 <" x1 [7:0] $end
+$var wire 8 =" x2 [7:0] $end
+$var wire 7 >" y0 [6:0] $end
+$var wire 7 ?" y1 [6:0] $end
+$var wire 7 @" y2 [6:0] $end
+$var wire 7 A" pixel_y [6:0] $end
+$var wire 8 B" pixel_x [7:0] $end
+$var wire 1 B pixel_valid $end
+$var reg 1 J pixel_inside $end
+$var integer 32 C" e0 [31:0] $end
+$var integer 32 D" e1 [31:0] $end
+$var integer 32 E" e2 [31:0] $end
+$var integer 32 F" px [31:0] $end
+$var integer 32 G" py [31:0] $end
+$var integer 32 H" vx0 [31:0] $end
+$var integer 32 I" vx1 [31:0] $end
+$var integer 32 J" vx2 [31:0] $end
+$var integer 32 K" vy0 [31:0] $end
+$var integer 32 L" vy1 [31:0] $end
+$var integer 32 M" vy2 [31:0] $end
+$upscope $end
+$scope module scanner_inst $end
+$var wire 1 ' clk $end
+$var wire 8 N" max_x [7:0] $end
+$var wire 7 O" max_y [6:0] $end
+$var wire 8 P" min_x [7:0] $end
+$var wire 7 Q" min_y [6:0] $end
+$var wire 1 * rst $end
+$var wire 1 [ start $end
+$var reg 1 D busy $end
+$var reg 1 C done $end
+$var reg 8 R" max_x_reg [7:0] $end
+$var reg 7 S" max_y_reg [6:0] $end
+$var reg 8 T" min_x_reg [7:0] $end
+$var reg 7 U" min_y_reg [6:0] $end
+$var reg 1 B pixel_valid $end
+$var reg 8 V" pixel_x [7:0] $end
+$var reg 7 W" pixel_y [6:0] $end
+$upscope $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+$comment Show the parameter values. $end
+$dumpall
+b10100000 9"
+b1111000 8"
+b100101100000000 7"
+b1111 6"
+b10100000 z
+b1111000 y
+b100101100000000 x
+$end
+#0
+$dumpvars
+bx W"
+bx V"
+bx U"
+bx T"
+bx S"
+bx R"
+bx Q"
+bx P"
+bx O"
+bx N"
+b0xxxxxxx M"
+b0xxxxxxx L"
+b0xxxxxxx K"
+b0xxxxxxxx J"
+b0xxxxxxxx I"
+b0xxxxxxxx H"
+b0xxxxxxx G"
+b0xxxxxxxx F"
+bx E"
+bx D"
+bx C"
+bx B"
+bx A"
+bx @"
+bx ?"
+bx >"
+bx ="
+bx <"
+bx ;"
+bx :"
+bx 5"
+bx 4"
+bx 3"
+bx 2"
+x1"
+bx 0"
+bx /"
+bx ."
+bx -"
+bx ,"
+bx +"
+bx *"
+bx )"
+bx ("
+x'"
+bx &"
+bx %"
+bx $"
+bx #"
+bx ""
+bx !"
+bx ~
+bx }
+bx |
+bx {
+bx w
+bx v
+bx u
+bx t
+bx s
+bx r
+bx q
+bx p
+bx o
+b1111111111111111 n
+bx m
+bx l
+bx k
+bx j
+bx i
+bx h
+bx g
+bx f
+bx e
+bx d
+bx c
+bx b
+bx a
+bx `
+bx _
+bx ^
+bx ]
+bx \
+x[
+xZ
+xY
+bx X
+bx W
+bx V
+xU
+xT
+bx S
+bx R
+bx Q
+bx P
+bx O
+bx N
+bx M
+bx L
+bx K
+0J
+bx I
+bx H
+xG
+bx F
+bx E
+xD
+xC
+xB
+bx A
+bx @
+bx ?
+bx >
+bx =
+bx <
+bx ;
+bx :
+bx 9
+bx 8
+bx 7
+bx 6
+bx 5
+b1111111111111111 4
+bx 3
+bx 2
+bx 1
+bx 0
+bx /
+bx .
+x-
+bx ,
+bx +
+1*
+bx )
+bx (
+0'
+x&
+x%
+x$
+bx #
+x"
+x!
+$end
+#5538656310000
+0 w
+b0 4"
+01"
+b0 V
+b0 q
+b0 X
+b0 s
+b0 W
+b0 r
+0U
+b0 M
+b0 k
+b0 O"
+b0 K
+b0 m
+b0 Q"
+b0 N
+b0 j
+b0 N"
+b0 L
+b0 l
+b0 P"
+b0 E"
+b0 D"
+b0 C"
+b0 M"
+b0 J"
+b0 L"
+b0 I"
+b0 K"
+b0 H"
+b0 G"
+b0 F"
+b0 U"
+b0 S"
+b0 R"
+b0 T"
+0C
+0D
+0B
+b0 P
+b0 u
+b0 }
+b0 @
+b0 #"
+b0 A"
+b0 W"
+b0 Q
+b0 v
+b0 |
+b0 A
+b0 $"
+b0 B"
+b0 V"
+b0 I
+b0 *"
+b0 0"
+b0 H
+b0 +"
+b0 E
+b0 -"
+b0 3"
+b0 F
+b0 ,"
+b0 2"
+0G
+b0 %"
+b0 &"
+b0 )"
+b0 ("
+0'"
+b0 R
+b0 p
+b0 S
+b0 o
+0T
+0$
+0%
+0[
+b0 \
+b0 ~
+b0 ]
+b0 !"
+b0 c
+b0 i
+b0 @"
+b0 `
+b0 f
+b0 ="
+b0 b
+b0 h
+b0 ?"
+b0 _
+b0 e
+b0 <"
+b0 a
+b0 g
+b0 >"
+b0 ^
+b0 d
+b0 ;"
+0!
+0Z
+0Y
+1'
+#10000
+1-
+0'
+#15000
+1'
+#20000
+1&
+0'
+#25000
+1'
+#30000
+0'
+#35000
+1'
+#40000
+0'
+#45000
+1'
+#50000
+0'
+#55000
+1'
+#60000
+0'
+#65000
+1'

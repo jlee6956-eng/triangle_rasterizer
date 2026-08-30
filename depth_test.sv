@@ -63,5 +63,6 @@ always_ff @(posedge clk) begin
             write_color <= saved_color;
         end
     end
+end
 
 endmodule

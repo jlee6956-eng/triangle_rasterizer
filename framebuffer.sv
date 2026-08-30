@@ -13,17 +13,18 @@ module framebuffer (
     output logic [11:0] read_color
 );
 
-localparam int WIDTH  = 160;
-localparam int HEIGHT = 120;
-localparam int DEPTH  = WIDTH * HEIGHT;
+localparam int WIDTH      = 160;
+localparam int HEIGHT     = 120;
+localparam int DEPTH      = WIDTH * HEIGHT;
+localparam int ADDR_WIDTH = $clog2(DEPTH);
 
 logic [11:0] memory [0:DEPTH-1];
 
-logic [$clog2(DEPTH)-1:0] write_pos;
-logic [$clog2(DEPTH)-1:0] read_pos;
+logic [ADDR_WIDTH-1:0] write_pos;
+logic [ADDR_WIDTH-1:0] read_pos;
 
 assign write_pos = write_y * WIDTH + write_x;
-assign read_pos  = read_y  * WIDTH + read_x;
+assign read_pos  = read_y * WIDTH + read_x;
 
 always_ff @(posedge clk) begin
     if (write_en) begin

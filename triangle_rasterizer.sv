@@ -106,7 +106,6 @@ logic [15:0] depth_write_value;
  * Pipeline completion signals
  *----------------------------------------------------------*/
 
-logic scanner_done_delay;
 
 /*----------------------------------------------------------
  * Accept and save a triangle command
@@ -309,11 +308,16 @@ framebuffer framebuffer_inst (
  * completes, so scanner_done is delayed.
  *----------------------------------------------------------*/
 
+logic scanner_done_delay1;
+logic scanner_done_delay2;
+
 always_ff @(posedge clk) begin
     if (rst) begin
-        scanner_done_delay <= 0;
+        scanner_done_delay1 <= 0;
+        scanner_done_delay2 <= 0;
     end else begin
-        scanner_done_delay <= scanner_done;
+        scanner_done_delay1 <= scanner_done;
+        scanner_done_delay2 <= scanner_done_delay1;
     end
 end
 
@@ -321,8 +325,8 @@ assign triangle_busy =
     scanner_start ||
     scanner_busy  ||
     scanner_done  ||
-    scanner_done_delay;
+    scanner_done_delay2;
 
-assign triangle_done = scanner_done_delay;
+assign triangle_done = scanner_done_delay2;
 
 endmodule
