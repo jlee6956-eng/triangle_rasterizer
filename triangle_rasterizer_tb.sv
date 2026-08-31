@@ -125,11 +125,49 @@ initial begin
     triangle_start = 0;
 
     // Wait until the complete triangle pipeline finishes
-    wait (triangle_done == 1);
+// Wait until the first triangle finishes
+wait (triangle_done == 1);
+repeat (5) @(posedge clk);
 
-    // Allow time for the synchronous framebuffer read
-    repeat (5) @(posedge clk);
+// Verify first triangle
+if ((debug_depth_55_18 !== 16'h5552) ||
+    (debug_color_55_18 !== 12'hAAA)) begin
+    $error("First triangle failed");
+end else begin
+    $display("First triangle passed");
+end
 
+// Ensure triangle_done has returned low
+wait (triangle_done == 0);
+
+// Configure a closer second triangle
+triangle_depth = 16'h3555;
+triangle_color = 12'h2AA;
+
+// Start second triangle
+@(negedge clk);
+triangle_start = 1;
+
+@(negedge clk);
+triangle_start = 0;
+
+// Wait for the second triangle to complete
+wait (triangle_done == 1);
+repeat (5) @(posedge clk);
+
+// The closer triangle should overwrite the first
+if ((debug_depth_55_18 !== 16'h3555) ||
+    (debug_color_55_18 !== 12'h2AA)) begin
+    $error(
+        "Closer triangle failed: depth=%h color=%h",
+        debug_depth_55_18,
+        debug_color_55_18
+    );
+end else begin
+    $display("Closer triangle correctly overwrote first triangle");
+end
+
+$finish;
     $finish;
 end
 endmodule
