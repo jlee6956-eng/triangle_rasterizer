@@ -167,7 +167,13 @@ end else begin
     $display("Closer triangle correctly overwrote first triangle");
 end
 
+repeat (5) @(posedge clk);
+clear_start = 1;
+wait (clear_done);
+$display(debug_color_10_10);
+$display(debug_color_55_18);
+$display(debug_depth_10_10);
+$display(debug_depth_55_18);
 $finish;
-    $finish;
 end
 endmodule
